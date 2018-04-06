@@ -7,7 +7,13 @@ function Customer(){
 
 Customer.prototype.totalprice = function(){
     for (var i = 0; i < this.pizzas.length; i++){
-        for ( var j=0; j< this.pizzas[i].length;j++ ){
+        if(this.pizzas[i][0] == "small"){
+            this.price = this.price + 3;
+        }
+        if(this.pizzas[i][0] == "large"){
+            this.price = this.price + 6;
+        }
+        for ( var j=1; j< this.pizzas[i].length;j++ ){
             if (this.pizzas[i][j] == "xcheese" || this.pizzas[i][j] == "pepperoni" )
             {this.price = this.price+2}
             if (this.pizzas[i][j] == "artichokes" || this.pizzas[i][j] == "anchovy" )
@@ -21,8 +27,11 @@ Customer.prototype.totalprice = function(){
 $(document).ready(function(){
     $(".btn-primary").on('click',function(event){
         event.preventDefault();
+        
         var boxes = document.getElementsByClassName("form-check-input");
         var pizzaorder = [];
+        pizzaorder.push($('input[name=size]:checked').val());
+        console.log(pizzaorder[0]);
         for ( var i = 0; i < boxes.length; i++){
 
             if(boxes[i].checked === true){
