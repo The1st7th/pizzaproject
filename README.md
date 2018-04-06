@@ -1,6 +1,6 @@
 # _Pizza_
 
-#### _display beep boop or message depending on the numbers inputted, 3/30/2018_
+#### _displays price of the order and address to be delivered to, 3/30/2018_
 
 #### By _eri nicolas_
 
