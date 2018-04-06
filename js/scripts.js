@@ -3,6 +3,7 @@ var customer = new Customer();
 function Customer(){
     this.pizzas =[];
     this.price = 0;
+    this.address;
   };
 
 Customer.prototype.totalprice = function(){
@@ -31,7 +32,7 @@ $(document).ready(function(){
         var boxes = document.getElementsByClassName("form-check-input");
         var pizzaorder = [];
         pizzaorder.push($('input[name=size]:checked').val());
-        console.log(pizzaorder[0]);
+        
         for ( var i = 0; i < boxes.length; i++){
 
             if(boxes[i].checked === true){
@@ -49,8 +50,20 @@ $(document).ready(function(){
     });
     $(".btn-dark").on('click',function(event){
         event.preventDefault();
-        console.log("hello "+customer.pizzas);
-        $("h1").text(customer.totalprice());
+        
+        customer.address = $(".address").val();
+        console.log(customer.address);
+        $("h1#price").text(customer.totalprice());
+        $("h1#display").text(customer.address);
+        customer = new Customer();
+
+
+
+    });
+    $(".btn-warning").on('click',function(event){
+        event.preventDefault();
+        $("#address").append('<textarea class = "address"></textarea>');
+
 
 
     });
